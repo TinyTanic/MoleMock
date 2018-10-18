@@ -13,5 +13,6 @@ import { RoutesModule } from '../routes/routes.module';
   ],
   controllers: [ WorkspacesController ],
   providers: [ WorkspacesService ],
+  exports: [ WorkspacesService ],
 })
 export class WorkspacesModule {}

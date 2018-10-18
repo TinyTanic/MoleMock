@@ -10,7 +10,6 @@ export class WorkspacesController {
 
   constructor(
     private readonly _workspacesService: WorkspacesService,
-    private readonly _routesService: RoutesService,
   ) {}
 
   @Get()
@@ -24,8 +23,7 @@ export class WorkspacesController {
     const workspace = await this._workspacesService.getById(id);
 
     if (!!workspace) {
-      const routes = await this._routesService.getByWorkspaceId(id);
-      return ({ ...workspace, routes });
+      return workspace;
     } else {
       throw new HttpException('No workspaces found', HttpStatus.NOT_FOUND);
     }
