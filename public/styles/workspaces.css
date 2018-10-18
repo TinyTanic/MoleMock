@@ -1,0 +1,32 @@
+html {
+  font-family: 'Oxygen', sans-serif;
+}
+
+.workspaces {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.workspace {
+  border-radius: 6px;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  margin: 8px;
+  padding: 8px;
+  transition: background-color .4s ease;
+  width: 240px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.workspace:hover {
+  background-color: #ffdd57;
+  cursor: pointer;
+}
+
+.workspace h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
