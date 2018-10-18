@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Body, Delete, HttpCode, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Delete, HttpCode, Param, Patch } from '@nestjs/common';
 import { RoutesService } from './routes.service';
 import { IRoute } from './models/route.interface';
-import { CreateRouteDto } from './models/route.dto';
+import { CreateRouteDto, PatchRouteDto } from './models/route.dto';
 
 @Controller('routes')
 export class RoutesController {
@@ -23,6 +23,11 @@ export class RoutesController {
   @Post()
   public async create(@Body() createRouteDto: CreateRouteDto): Promise<IRoute> {
     return await this._routesService.create(createRouteDto);
+  }
+
+  @Patch()
+  public async update(@Body() route: PatchRouteDto) {
+    return this._routesService.update(route);
   }
 
   @Delete(':id')

@@ -1,4 +1,16 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Param, Post } from '@nestjs/common';
+import { RoutesService } from '../routes/routes.service';
 
 @Controller('api')
-export class ApiController {}
+export class ApiController {
+
+  constructor(
+    private readonly _routesService: RoutesService,
+  ) {}
+
+  @Get(':id')
+  public getByid(@Param() params) {
+    return this._routesService.getPayloadById(params.id);
+  }
+
+}

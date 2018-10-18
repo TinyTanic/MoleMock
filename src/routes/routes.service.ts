@@ -3,7 +3,7 @@ import { IRoute } from './models/route.interface';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Route } from './models/route.entity';
 import { Repository } from 'typeorm';
-import { CreateRouteDto } from './models/route.dto';
+import { CreateRouteDto, PatchRouteDto } from './models/route.dto';
 import { generateId } from '../common/utils/data-manager';
 
 @Injectable()
@@ -38,6 +38,10 @@ export class RoutesService {
 
   public async create(route: CreateRouteDto): Promise<IRoute> {
     return await this._routesRepository.save({ ...route, id: generateId(route.name) });
+  }
+
+  public async update(route: PatchRouteDto): Promise<IRoute> {
+    return await this._routesRepository.save(route);
   }
 
   public async remove(routeId: string) {
