@@ -1,0 +1,24 @@
+version: '3'
+services:
+
+  json-server:
+    image: node:alpine
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - 3000:3000
+    command: npm run start:dev
+    depends_on:
+      - database
+
+  database:
+    image: postgres:alpine
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=jsonserver
+      - POSTGRES_USER=jsonserver
+      - POSTGRES_DB=jsonserver

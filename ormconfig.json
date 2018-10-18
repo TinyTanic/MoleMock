@@ -1,0 +1,10 @@
+{
+  "type": "postgres",
+  "host": "database",
+  "port": 5432,
+  "username": "jsonserver",
+  "password": "jsonserver",
+  "database": "jsonserver",
+  "entities": ["src/**/**.entity{.ts,.js}"],
+  "synchronize": true
+}
