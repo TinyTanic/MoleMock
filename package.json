@@ -14,7 +14,8 @@
     "test": "jest",
     "test:cov": "jest --coverage",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "webpack": "webpack --config webpack.config.js"
+    "webpack": "webpack --config webpack.config.js",
+    "build:editor": "cp -R ./node_modules/jsoneditor/dist ./public/vendor/jsoneditor"
   },
   "dependencies": {
     "@nestjs/common": "^5.0.0",
@@ -23,6 +24,7 @@
     "@nestjs/typeorm": "^5.2.2",
     "fastify-formbody": "^2.0.0",
     "hbs": "^4.0.1",
+    "jsoneditor": "^5.24.7",
     "mongoose": "^5.3.4",
     "pg": "^7.5.0",
     "reflect-metadata": "^0.1.12",

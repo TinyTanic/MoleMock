@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mock Server / Route</title>
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700" rel="stylesheet">
+    <script src="/vendor/jsoneditor/jsoneditor.js"></script>
+    <script src="/vendor/jsoneditor/jsoneditor.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/vendor/jsoneditor/jsoneditor.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/vendor/jsoneditor/jsoneditor.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/route-detail.css" />
+</head>
+
+<body>
+    <div class="route-detail">
+        <h1 class="name">
+            {{route.name}}
+        </h1>
+        <h3 class="description">
+            {{route.description}}
+        </h3>
+        <div id="payload-code"></div>
+        <div id="payload-tree"></div>
+    </div>
+    <script>
+
+        // create the editor
+        var containerCode = document.getElementById("payload-code");
+        var containerTree = document.getElementById("payload-tree");
+        var optionsCode = {
+            mode: 'code',
+            onChange: (value) => {
+                console.log(value)
+                console.log(editorCode.get())
+            }
+        };
+        var optionsTree = {
+            mode: 'tree',
+        };
+        var editorCode = new JSONEditor(containerCode, optionsCode);
+        var editorTree = new JSONEditor(containerTree, optionsTree);
+
+        // set json
+        var json = {
+            "Array": [1, 2, 3],
+            "Boolean": true,
+            "Null": null,
+            "Number": 123,
+            "Object": {"a": "b", "c": "d"},
+            "String": "Hello World"
+        };
+        editorTree.set(json);
+        editorCode.set(json);
+
+    </script>
+</body>
+
+</html>
