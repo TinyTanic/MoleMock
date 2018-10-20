@@ -1,6 +1,7 @@
-import { Get, Controller, Render, Param } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Param, Render } from '@nestjs/common';
+import * as Handlebars from 'hbs';
 import { WorkspacesService } from 'workspaces/workspaces.service';
+
 import { RoutesService } from './routes/routes.service';
 
 @Controller()
@@ -9,7 +10,12 @@ export class AppController {
   constructor(
     private readonly _workspacesService: WorkspacesService,
     private readonly _routesService: RoutesService,
-  ) {}
+  ) {
+    Handlebars.registerHelper('json', (context) => {
+      return JSON.stringify(context);
+    })
+
+  }
 
   @Get()
   @Render('index')
@@ -39,8 +45,9 @@ export class AppController {
   @Get('route/:id')
   @Render('route-detail')
   public async route(@Param() params) {
+    const route = await this._routesService.getById(params.id);
     return ({
-      route: await this._routesService.getById(params.id),
+      route,
     });
   }
 }
