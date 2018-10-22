@@ -5,7 +5,7 @@ import { IWorkspace, IWorkspaceDetail } from './models/workspace.interface';
 import { WorkspacesService } from './workspaces.service';
 import { RoutesService } from '../routes/routes.service';
 
-@Controller('workspaces')
+@Controller('api/workspaces')
 export class WorkspacesController {
 
   constructor(

@@ -5,6 +5,8 @@ html {
 .workspaces {
   display: flex;
   flex-wrap: wrap;
+  max-width: 1440px;
+  margin: auto;
 }
 
 .workspace {

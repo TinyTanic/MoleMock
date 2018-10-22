@@ -3,7 +3,7 @@ import { RoutesService } from './routes.service';
 import { IRoute } from './models/route.interface';
 import { CreateRouteDto, PatchRouteDto } from './models/route.dto';
 
-@Controller('routes')
+@Controller('api/routes')
 export class RoutesController {
 
   constructor(

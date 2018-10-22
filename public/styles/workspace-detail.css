@@ -4,6 +4,8 @@ html {
 
 .workspace-detail {
   padding: 8px;
+  max-width: 1440px;
+  margin: auto;
 }
 
 .workspace,

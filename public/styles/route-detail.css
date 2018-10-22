@@ -4,6 +4,8 @@ html {
 
 .route-detail {
   padding: 8px;
+  max-width: 1440px;
+  margin: auto;
 }
 
 .route {
@@ -22,6 +24,8 @@ html {
 
 .editor-container {
   display: flex;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .editor-container > div {
@@ -32,7 +36,13 @@ html {
   position: absolute;
   bottom: 8px;
   right: 8px;
-  border-radius: 6px;
+  border-radius: 4px;
+  background-color: #ffdd57;
+  border-color: transparent;
+  color: rgba(0,0,0,.7);
+  padding: 8px;
+  font-weight: bold;
+  min-width: 73px;
 }
 
 .save.hidden {

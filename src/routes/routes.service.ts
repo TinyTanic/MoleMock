@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { IRoute } from './models/route.interface';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Route } from './models/route.entity';
 import { Repository } from 'typeorm';
+import * as uuidv4 from 'uuid/v4';
+
 import { CreateRouteDto, PatchRouteDto } from './models/route.dto';
-import { generateId } from '../common/utils/data-manager';
+import { Route } from './models/route.entity';
+import { IRoute } from './models/route.interface';
 
 @Injectable()
 export class RoutesService {
@@ -37,7 +38,7 @@ export class RoutesService {
   }
 
   public async create(route: CreateRouteDto): Promise<IRoute> {
-    return await this._routesRepository.save({ ...route, id: generateId(route.name) });
+    return await this._routesRepository.save({ ...route, id: uuidv4() });
   }
 
   public async update(route: PatchRouteDto): Promise<IRoute> {

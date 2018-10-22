@@ -12,10 +12,8 @@ export class AppController {
     private readonly _routesService: RoutesService,
   ) {
     Handlebars.registerHelper('json', (context) => {
-      console.log(context)
       return JSON.stringify(context);
     });
-
   }
 
   @Get()
@@ -47,7 +45,9 @@ export class AppController {
   @Render('route-detail')
   public async route(@Param() params) {
     const route = await this._routesService.getById(params.id);
+    const { routes } = await this._workspacesService.getById(route.workspace);
     return ({
+      routes,
       route,
     });
   }

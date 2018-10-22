@@ -7,12 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Mock Server / Route</title>
     <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700" rel="stylesheet">
-    <script src="/vendor/jsoneditor/jsoneditor.js"></script>
-    <script src="/vendor/jsoneditor/jsoneditor.min.js"></script>
     <link rel="stylesheet" type="text/css" media="screen" href="/vendor/jsoneditor/jsoneditor.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/vendor/jsoneditor/jsoneditor.min.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/styles/reset.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/styles/route-detail.css" />
+    <script src="/vendor/jsoneditor/jsoneditor.js"></script>
+    <script src="/vendor/jsoneditor/jsoneditor.min.js"></script>
 </head>
 
 <body>
@@ -24,6 +24,12 @@
             <h3 class="description">
                 {{route.description}}
             </h3>
+            <div class="more-info">
+                <div class="mock">
+                    This is a mock of this api:
+                    <input type="text" value="{{ route.name }}">
+                </div>
+            </div>
             <button id="save-button" class="save hidden">
                 SAVE
             </button>
@@ -34,20 +40,15 @@
         </div>
     </div>
     <script>
-
         var saveButton = document.getElementById('save-button');
-
         var startJSON = {{{json route}}}
-
-        console.log(startJSON)
         saveButton.addEventListener('click', () => {
             try {
                 const body = {
                     ...startJSON,
                     payload: editorCode.get(),
                 }
-                console.log(body)
-                fetch('/routes', {
+                fetch('/api/routes', {
                     method: 'PATCH',
                     headers: {
                         "Content-Type": "application/json; charset=utf-8",
@@ -67,9 +68,11 @@
             mode: 'code',
             onChange: (value) => {
                 try {
-                    saveButton.classList.remove('hidden');
                     editorTree.set(editorCode.get());
-                } catch(e) {}
+                    saveButton.classList.remove('hidden');
+                } catch(e) {
+                    saveButton.classList.add('hidden');
+                }
             }
         };
         var optionsTree = {
@@ -88,7 +91,6 @@
         var json = {{{json route.payload}}};
         editorTree.set(json);
         editorCode.set(json);
-
     </script>
 </body>
 
