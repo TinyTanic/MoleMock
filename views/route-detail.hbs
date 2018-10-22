@@ -37,9 +37,27 @@
 
         var saveButton = document.getElementById('save-button');
 
+        var startJSON = {{{json route}}}
+
+        console.log(startJSON)
         saveButton.addEventListener('click', () => {
-            fetch('/').then(console.log)
-            saveButton.classList.add('hidden')
+            try {
+                const body = {
+                    ...startJSON,
+                    payload: editorCode.get(),
+                }
+                console.log(body)
+                fetch('/routes', {
+                    method: 'PATCH',
+                    headers: {
+                        "Content-Type": "application/json; charset=utf-8",
+                    },
+                    body: JSON.stringify(body),
+                })
+                .then(() => {
+                    saveButton.classList.add('hidden');
+                })
+            } catch (e) {}
         })
 
         // create the editor
@@ -49,8 +67,8 @@
             mode: 'code',
             onChange: (value) => {
                 try {
-                    saveButton.classList.remove('hidden')
-                    editorTree.set(editorCode.get())
+                    saveButton.classList.remove('hidden');
+                    editorTree.set(editorCode.get());
                 } catch(e) {}
             }
         };
@@ -58,8 +76,8 @@
             mode: 'tree',
             onChange: (value) => {
                 try {
-                    saveButton.classList.remove('hidden')
-                    editorCode.set(editorTree.get())
+                    saveButton.classList.remove('hidden');
+                    editorCode.set(editorTree.get());
                 } catch(e) {}
             }
         };

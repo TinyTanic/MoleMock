@@ -12,6 +12,7 @@ export class AppController {
     private readonly _routesService: RoutesService,
   ) {
     Handlebars.registerHelper('json', (context) => {
+      console.log(context)
       return JSON.stringify(context);
     });
 
