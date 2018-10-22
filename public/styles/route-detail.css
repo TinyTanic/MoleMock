@@ -2,7 +2,39 @@ html {
   font-family: 'Oxygen', sans-serif;
 }
 
-#payload {
-  height: 500px;
-  width: 500px;
+.route-detail {
+  padding: 8px;
+}
+
+.route {
+  border-radius: 6px;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  padding: 8px;
+  transition: background-color .4s ease;
+  width: 100%;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.editor-container {
+  display: flex;
+}
+
+.editor-container > div {
+  width: 50%;
+}
+
+.save {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  border-radius: 6px;
+}
+
+.save.hidden {
+  display: none;
 }

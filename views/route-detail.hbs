@@ -17,16 +17,30 @@
 
 <body>
     <div class="route-detail">
-        <h1 class="name">
-            {{route.name}}
-        </h1>
-        <h3 class="description">
-            {{route.description}}
-        </h3>
-        <div id="payload-code"></div>
-        <div id="payload-tree"></div>
+        <div class="route">
+            <h1 class="name">
+                {{route.name}}
+            </h1>
+            <h3 class="description">
+                {{route.description}}
+            </h3>
+            <button id="save-button" class="save hidden">
+                SAVE
+            </button>
+        </div>
+        <div class="editor-container">
+            <div id="payload-code"></div>
+            <div id="payload-tree"></div>
+        </div>
     </div>
     <script>
+
+        var saveButton = document.getElementById('save-button');
+
+        saveButton.addEventListener('click', () => {
+            fetch('/').then(console.log)
+            saveButton.classList.add('hidden')
+        })
 
         // create the editor
         var containerCode = document.getElementById("payload-code");
@@ -34,25 +48,26 @@
         var optionsCode = {
             mode: 'code',
             onChange: (value) => {
-                console.log(value)
-                console.log(editorCode.get())
+                try {
+                    saveButton.classList.remove('hidden')
+                    editorTree.set(editorCode.get())
+                } catch(e) {}
             }
         };
         var optionsTree = {
             mode: 'tree',
+            onChange: (value) => {
+                try {
+                    saveButton.classList.remove('hidden')
+                    editorCode.set(editorTree.get())
+                } catch(e) {}
+            }
         };
         var editorCode = new JSONEditor(containerCode, optionsCode);
         var editorTree = new JSONEditor(containerTree, optionsTree);
 
         // set json
-        var json = {
-            "Array": [1, 2, 3],
-            "Boolean": true,
-            "Null": null,
-            "Number": 123,
-            "Object": {"a": "b", "c": "d"},
-            "String": "Hello World"
-        };
+        var json = {{{json route.payload}}};
         editorTree.set(json);
         editorCode.set(json);
 
