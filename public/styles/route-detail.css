@@ -36,13 +36,6 @@ html {
   position: absolute;
   bottom: 8px;
   right: 8px;
-  border-radius: 4px;
-  background-color: #ffdd57;
-  border-color: transparent;
-  color: rgba(0,0,0,.7);
-  padding: 8px;
-  font-weight: bold;
-  min-width: 73px;
 }
 
 .save.hidden {

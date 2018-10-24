@@ -17,7 +17,7 @@ services:
   database:
     image: postgres:alpine
     volumes:
-      - ~/tmp/jsonserver/data/db:/var/lib/postgresql/data
+      - ./data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=jsonserver
       - POSTGRES_USER=jsonserver
