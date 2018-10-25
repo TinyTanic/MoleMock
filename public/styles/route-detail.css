@@ -25,6 +25,17 @@ html {
   position: relative;
 }
 
+.route i.copy {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+
+.route i.copy:hover {
+  color: rgb(26, 190, 89);
+}
+
 .route h1 {
   font-size: 1.5rem;
   font-weight: bold;

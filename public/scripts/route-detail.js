@@ -52,3 +52,7 @@ var optionsTree = {
 };
 var editorCode = new JSONEditor(containerCode, optionsCode);
 var editorTree = new JSONEditor(containerTree, optionsTree);
+
+new ClipboardJS('.route i.copy', {
+  text: () => `${ window.location.origin }/api/${ startJSON.id }`
+});

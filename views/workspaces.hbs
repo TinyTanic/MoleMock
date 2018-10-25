@@ -24,7 +24,8 @@
             {{#each workspaces}}
             <a href="/workspace/{{id}}">
                 <div class="workspace">
-                    <i class="fas fa-trash-alt" onclick="removeWorkspace(event, '{{id}}')"></i>
+                    <i class="fas fa-trash-alt delete" onclick="removeWorkspace(event, '{{id}}')"></i>
+                    <i class="fas fa-pencil-alt edit" onclick="editWorkspace(event, '{{id}}')"></i>
                     <h1 class="title">
                         {{name}}
                     </h1>

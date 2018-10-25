@@ -75,4 +75,9 @@ function removeWorkspace(event, workspaceId) {
     })
 }
 
+function editWorkspace(event, workspaceId) {
+  event.preventDefault()
+  console.log(workspaceId)
+}
+
 validateCreate()

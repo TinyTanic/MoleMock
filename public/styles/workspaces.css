@@ -43,13 +43,25 @@ html {
 
 .workspace i {
   position: absolute;
-  top: 8px;
-  right: 8px;
   transition: color .4s ease;
 }
 
-.workspace i:hover {
+.workspace i.delete {
+  top: 8px;
+  right: 8px;
+}
+
+.workspace i.delete:hover {
   color: rgb(214, 52, 12);
+}
+
+.workspace i.edit {
+  top: 32px;
+  right: 8px;
+}
+
+.workspace i.edit:hover {
+  color: rgb(12, 93, 214);
 }
 
 .no-ws {
