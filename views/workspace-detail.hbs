@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css" integrity="sha384-osqezT+30O6N/vsMqwW8Ch6wKlMofqueuia2H7fePy42uC05rm1G+BUPSd2iBSJL" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css" integrity="sha384-BzCy2fixOYd0HObpx3GMefNqdbA7Qjcc91RgYeDjrHTIEXqiF00jKvgQG0+zY/7I" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css" integrity="sha384-osqezT+30O6N/vsMqwW8Ch6wKlMofqueuia2H7fePy42uC05rm1G+BUPSd2iBSJL"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css" integrity="sha384-BzCy2fixOYd0HObpx3GMefNqdbA7Qjcc91RgYeDjrHTIEXqiF00jKvgQG0+zY/7I"
+        crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" media="screen" href="/styles/reset.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/styles/common.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/styles/workspace-detail.css" />
@@ -31,17 +33,17 @@
             {{#if workspace.routes.length}}
             <div class="routes-container">
                 {{#each workspace.routes}}
-                    <a href="/route/{{id}}">
-                        <div class="route">
-                            <i class="fas fa-trash-alt" onclick="removeRoute(event, '{{id}}')"></i>
-                            <h1 class="title">
-                                {{name}}
-                            </h1>
-                            <h3 class="description">
-                                {{description}}
-                            </h3>
-                        </div>
-                    </a>
+                <a href="/route/{{id}}">
+                    <div class="route">
+                        <i class="fas fa-trash-alt" onclick="removeRoute(event, '{{id}}')"></i>
+                        <h1 class="title">
+                            {{name}}
+                        </h1>
+                        <h3 class="description">
+                            {{description}}
+                        </h3>
+                    </div>
+                </a>
                 {{/each}}
             </div>
             {{else}}

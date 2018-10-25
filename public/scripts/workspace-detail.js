@@ -30,17 +30,12 @@ function changeDescription(event) {
 
 function clickCreate() {
   if (noRoutesContainer) {
-    noRoutesContainer
-      .classList
-      .add('hidden')
-    createContainer.classList.remove('hidden')
+    noRoutesContainer.classList.add('hidden')
   }
   if (routesContainer) {
-    routesContainer
-      .classList
-      .add('hidden')
-    createContainer.classList.remove('hidden')
+    routesContainer.classList.add('hidden')
   }
+  createContainer.classList.remove('hidden')
 }
 
 function createRoute() {
@@ -74,13 +69,13 @@ function removeRoute(event, routeId) {
 }
 
 function closeCreate() {
-  createContainer.classList.add('hidden')
   if (routesContainer) {
     routesContainer.classList.remove('hidden')
   }
   if (noRoutesContainer) {
     noRoutesContainer.classList.remove('hidden')
   }
+  createContainer.classList.add('hidden')
 }
 
 validateCreate()

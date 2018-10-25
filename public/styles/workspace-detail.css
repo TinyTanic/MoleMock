@@ -70,7 +70,9 @@ html {
   position: absolute;
   top: 8px;
   right: 8px;
+  transition: color .4s ease;
 }
+
 .route i:hover {
   color: rgb(214, 52, 12);
 }

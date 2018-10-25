@@ -2,11 +2,18 @@ html {
   font-family: 'Oxygen', sans-serif;
 }
 
-.workspaces {
+.page-workspaces {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  height: 100vh;
   max-width: 1440px;
   margin: auto;
+}
+
+.workspaces-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .workspace {
@@ -20,6 +27,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  position: relative;
 }
 
 .workspace:hover {
@@ -31,6 +39,17 @@ html {
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 8px;
+}
+
+.workspace i {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  transition: color .4s ease;
+}
+
+.workspace i:hover {
+  color: rgb(214, 52, 12);
 }
 
 .no-ws {
@@ -47,6 +66,13 @@ html {
 }
 
 .create-ws-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-ws-card {
   width: 300px;
   padding-top: 24px;
   border-radius: 6px;
@@ -54,13 +80,26 @@ html {
   padding: 8px;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
-.create-ws-container h4 {
+.create-ws-card i.close:hover {
+  color: rgb(214, 52, 12);
+  cursor: pointer;
+}
+
+.create-ws-card i.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  transition: color .4s ease;
+}
+
+.create-ws-card h4 {
   margin-bottom: 16px;
 }
 
-.create-ws-container input {
+.create-ws-card input {
   display: block;
   margin-bottom: 16px;
   padding: 8px;
@@ -68,10 +107,9 @@ html {
   width: 100%;
 }
 
-.create-ws-container button {
+.create-ws-card button {
   justify-self: right;
 }
-
 .hidden {
   display: none;
 }
