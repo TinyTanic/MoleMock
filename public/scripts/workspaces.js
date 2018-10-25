@@ -8,7 +8,7 @@ let createDescription = ''
 function validateCreate() {
   const button = document.querySelector('button.create-cta.button')
   if (button) {
-    if (createName && createDescription) {
+    if (createName) {
       button.classList.remove('disabled')
       button.disabled = false
     } else {

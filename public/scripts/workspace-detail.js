@@ -8,7 +8,7 @@ let createDescription = ''
 function validateCreate() {
   const button = document.querySelector('button.create-cta.button')
   if (button) {
-    if (createName && createDescription) {
+    if (createName) {
       button.classList.remove('disabled')
       button.disabled = false
     } else {
@@ -43,7 +43,7 @@ function createRoute() {
   const description = document.querySelector('input[name="description"]').value
   const workspace = document.querySelector('input[name="workspace"]').value
 
-  if (name && description && workspace) {
+  if (name && workspace) {
     const body = { name, description, workspace }
     fetch('/api/routes', {
       method: 'POST',
