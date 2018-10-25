@@ -8,7 +8,7 @@ html {
 
 .workspace-detail {
   padding: 8px;
-  max-width: 1440px;
+  max-width: 1024px;
   margin: auto;
   height: 100%;
   display: flex;
@@ -37,6 +37,11 @@ html {
   flex-direction: column;
   justify-content: flex-end;
   position: relative;
+}
+
+.workspace h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 
 .routes-container {

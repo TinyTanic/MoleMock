@@ -2,10 +2,13 @@ html {
   font-family: 'Oxygen', sans-serif;
 }
 
-.route-detail {
+.page-route-detail {
   padding: 8px;
-  max-width: 1440px;
+  max-width: 1024px;
   margin: auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .route {
@@ -22,10 +25,16 @@ html {
   position: relative;
 }
 
+.route h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 .editor-container {
   display: flex;
   border-radius: 6px;
   overflow: hidden;
+  flex-grow: 1;
 }
 
 .editor-container > div {
