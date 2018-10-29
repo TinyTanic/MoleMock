@@ -1,0 +1,146 @@
+html {
+  font-family: 'Oxygen', sans-serif;
+}
+
+.page-workspace-detail {
+  height: 100vh;
+}
+
+.workspace-detail {
+  padding: 8px;
+  max-width: 1024px;
+  margin: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.workspace .add-route-cta {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  max-width: 250px;
+}
+
+.workspace,
+.routes-container .route {
+  border-radius: 6px;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  padding: 8px;
+  transition: background-color .4s ease;
+  width: 100%;
+  height: 120px;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.workspace h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.routes-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.routes-container a {
+  margin-right: 8px;
+  margin-top: 8px;
+}
+
+.route {
+  min-width: 120px;
+  position: relative;
+}
+
+.route:hover {
+  background-color: #ffdd57;
+  cursor: pointer;
+}
+
+.route h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.route i {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  transition: color .4s ease;
+}
+
+.route i:hover {
+  color: rgb(214, 52, 12);
+}
+
+.no-route {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.no-route-title {
+  margin-bottom: 16px;
+}
+
+.create-route-container {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-route-card {
+  width: 300px;
+  padding-top: 24px;
+  border-radius: 6px;
+  box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.create-route-card i.close:hover {
+  color: rgb(214, 52, 12);
+  cursor: pointer;
+}
+
+.create-route-card i.close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  transition: color .4s ease;
+}
+
+.create-route-card h4 {
+  margin-bottom: 16px;
+}
+
+.create-route-card input {
+  display: block;
+  margin-bottom: 16px;
+  padding: 8px;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.create-route-card button {
+  justify-self: right;
+}
+
+.hidden {
+  display: none;
+}

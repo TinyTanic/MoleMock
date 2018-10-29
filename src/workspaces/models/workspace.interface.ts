@@ -6,6 +6,6 @@ export interface IWorkspace {
   description: string;
 }
 
-export interface IWorkspaceDetail extends IWorkspace{
+export interface IWorkspaceDetail extends IWorkspace {
   routes: IRoute[];
 }

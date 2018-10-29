@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mock Server / Route</title>
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css" integrity="sha384-osqezT+30O6N/vsMqwW8Ch6wKlMofqueuia2H7fePy42uC05rm1G+BUPSd2iBSJL"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css" integrity="sha384-BzCy2fixOYd0HObpx3GMefNqdbA7Qjcc91RgYeDjrHTIEXqiF00jKvgQG0+zY/7I"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="/vendor/jsoneditor/jsoneditor.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/vendor/jsoneditor/jsoneditor.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/common.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/route-detail.css" />
+    <script src="/vendor/jsoneditor/jsoneditor.js"></script>
+    <script src="/vendor/jsoneditor/jsoneditor.min.js"></script>
+</head>
+
+<body>
+    <div class="page-route-detail">
+        <div class="route">
+            <i class="fas fa-clipboard copy"></i>
+            <h1 class="name">
+                {{route.name}}
+            </h1>
+            <h3 class="description">
+                {{route.description}}
+            </h3>
+            <button id="save-button" class="save button hidden" onclick="saveRoute()">
+                SAVE
+            </button>
+        </div>
+        <div class="editor-container">
+            <div id="payload-code"></div>
+            <div id="payload-tree"></div>
+        </div>
+    </div>
+    <script src="/scripts/route-detail.js"></script>
+    <script>
+        setRouteInfo({{{json route}}})
+    </script>
+</body>
+
+</html>

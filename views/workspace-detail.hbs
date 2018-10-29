@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Oxygen:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/solid.css" integrity="sha384-osqezT+30O6N/vsMqwW8Ch6wKlMofqueuia2H7fePy42uC05rm1G+BUPSd2iBSJL"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/fontawesome.css" integrity="sha384-BzCy2fixOYd0HObpx3GMefNqdbA7Qjcc91RgYeDjrHTIEXqiF00jKvgQG0+zY/7I"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/common.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/styles/workspace-detail.css" />
+    <title>Mock Server / Workspace</title>
+</head>
+
+<body>
+    <div class="page-workspace-detail">
+        <div class="workspace-detail">
+            <div class="workspace">
+                <h1 class="title">
+                    {{workspace.name}}
+                </h1>
+                <h3 class="description">
+                    {{workspace.description}}
+                </h3>
+                <button class="add-route-cta button" onclick="clickCreate()">
+                    add route
+                </button>
+            </div>
+            {{#if workspace.routes.length}}
+            <div class="routes-container">
+                {{#each workspace.routes}}
+                <a href="/route/{{id}}">
+                    <div class="route">
+                        <i class="fas fa-trash-alt" onclick="removeRoute(event, '{{id}}')"></i>
+                        <h1 class="title">
+                            {{name}}
+                        </h1>
+                        <h3 class="description">
+                            {{description}}
+                        </h3>
+                    </div>
+                </a>
+                {{/each}}
+            </div>
+            {{else}}
+            <div class="no-route">
+                <div class="no-route-title">
+                    No Routes found. Create a new one!
+                </div>
+            </div>
+            {{/if}}
+            <div class="create-route-container hidden">
+                <div class="create-route-card">
+                    <i class="fas fa-times close" onclick="closeCreate()"></i>
+                    <h4>Route Detail</h4>
+                    <input name="workspace" type="hidden" value="{{workspace.id}}">
+                    <input name="name" placeholder="Name" onkeyup="changeName(event)">
+                    <input name="description" placeholder="Description" onkeyup="changeDescription(event)">
+                    <button class="create-cta button" onclick="createRoute()">add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/scripts/workspace-detail.js"></script>
+</body>
+
+</html>
