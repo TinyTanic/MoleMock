@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Delete, HttpCode, Param, Patch } from '@ne
 import { RoutesService } from './routes.service';
 import { IRoute } from './models/route.interface';
 import { CreateRouteDto, PatchRouteDto } from './models/route.dto';
+import { Route } from './models/route.entity';
 
 @Controller('api/routes')
 export class RoutesController {
@@ -11,12 +12,12 @@ export class RoutesController {
   ) {}
 
   @Get()
-  public getAll(): Promise<IRoute[]> {
+  public getAll(): Promise<Route[]> {
     return this._routesService.getAll();
   }
 
   @Get(':id')
-  public getById(@Param() params): Promise<IRoute> {
+  public getById(@Param() params): Promise<Route> {
     return this._routesService.getById(params.id);
   }
 

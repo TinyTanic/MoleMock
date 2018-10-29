@@ -20,14 +20,9 @@ export class WorkspacesService {
     return await this._workspaceRepository.find();
   }
 
-  public async getById(workspaceId): Promise<IWorkspaceDetail> {
-    const [ workspace ] = await this._workspaceRepository.find({ id: workspaceId });
-
-    if (workspace) {
-      const routes = await this._routesService.getByWorkspaceId(workspaceId);
-      return ({ ...workspace, routes });
-    }
-    return null;
+  public async getById(workspaceId): Promise<Workspace> {
+    const [ workspace ] = await this._workspaceRepository.find({ relations: ['routes'], where: { id: workspaceId } });
+    return workspace;
   }
 
   public async create(workspace: CreateWorkspaceDto): Promise<IWorkspace> {

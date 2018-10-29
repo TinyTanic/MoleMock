@@ -15,7 +15,8 @@
     "test:cov": "jest --coverage",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "webpack": "webpack --config webpack.config.js",
-    "build:editor": "cp -R ./node_modules/jsoneditor/dist ./public/vendor/jsoneditor"
+    "build:editor": "cp -R ./node_modules/jsoneditor/dist ./public/vendor/jsoneditor",
+    "start:container": "docker-compose up --build"
   },
   "dependencies": {
     "@nestjs/common": "^5.0.0",
