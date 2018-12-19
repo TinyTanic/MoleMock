@@ -9,7 +9,7 @@ services:
       - .:/app
     working_dir: /app
     ports:
-      - 3000:3000
+      - 3002:3000
     command: npm run start:dev
     depends_on:
       - database
@@ -17,7 +17,7 @@ services:
   database:
     image: postgres:alpine
     volumes:
-      - ./data/db:/var/lib/postgresql/data
+      - ~/tmp/data/db:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=jsonserver
       - POSTGRES_USER=jsonserver

@@ -1,9 +1,9 @@
 {
-  "name": "json-server",
+  "name": "mock-a-boo",
   "version": "0.0.1",
-  "description": "description",
+  "description": "a mock server",
   "author": "Luca Aguzzoli",
-  "license": "",
+  "license": "MIT",
   "scripts": {
     "format": "prettier --write \"**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
@@ -44,7 +44,7 @@
     "@types/node": "^9.3.0",
     "@types/supertest": "^2.0.4",
     "jest": "^21.2.1",
-    "nodemon": "^1.14.1",
+    "nodemon": "^1.18.9",
     "prettier": "^1.11.1",
     "supertest": "^3.0.0",
     "ts-jest": "^21.2.4",
@@ -68,5 +68,9 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "coverageDirectory": "../coverage"
+  },
+  "engines": {
+    "node": ">=v10.13.0",
+    "npm": ">=6.4.1"
   }
 }

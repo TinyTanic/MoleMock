@@ -3,18 +3,16 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import * as uuidv4 from 'uuid/v4';
 
-import { RoutesService } from '../routes/routes.service';
 import { CreateWorkspaceDto } from './models/workspace.dto';
 import { Workspace } from './models/workspace.entity';
-import { IWorkspace, IWorkspaceDetail } from './models/workspace.interface';
+import { IWorkspace } from './models/workspace.interface';
 
 @Injectable()
 export class WorkspacesService {
 
   constructor(
     @InjectRepository(Workspace) private readonly _workspaceRepository: Repository<Workspace>,
-    private readonly _routesService: RoutesService,
-    ) {}
+  ) {}
 
   public async getAll(): Promise<IWorkspace[]> {
     return await this._workspaceRepository.find();
