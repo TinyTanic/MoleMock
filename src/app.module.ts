@@ -6,9 +6,17 @@ import { WorkspacesModule } from './workspaces/workspaces.module';
 import { RoutesModule } from './routes/routes.module';
 import { ApiModule } from './api/api.module';
 
+import env from './scripts/env';
+
 @Module({
   imports: [
-    TypeOrmModule.forRoot(),
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      // tslint:disable-next-line:max-line-length
+      url: env.DATABASE_URL,
+      entities: ['src/**/**.entity{.ts,.js}'],
+      synchronize: true,
+    }),
     WorkspacesModule,
     RoutesModule,
     ApiModule,
