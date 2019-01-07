@@ -1,10 +1,13 @@
-import { Controller, Get, Post, Body, Delete, HttpCode, Param, Patch } from '@nestjs/common';
-import { RoutesService } from './routes.service';
-import { IRoute } from './models/route.interface';
+import { Body, Controller, Delete, Get, HttpCode, Param, Patch, Post, UseGuards } from '@nestjs/common';
+
+import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 import { CreateRouteDto, PatchRouteDto } from './models/route.dto';
 import { Route } from './models/route.entity';
+import { IRoute } from './models/route.interface';
+import { RoutesService } from './routes.service';
 
 @Controller('api/routes')
+@UseGuards(JwtAuthGuard)
 export class RoutesController {
 
   constructor(

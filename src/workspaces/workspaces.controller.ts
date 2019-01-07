@@ -1,11 +1,13 @@
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, HttpException, HttpStatus } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, HttpException, HttpStatus, UseGuards } from '@nestjs/common';
 
 import { CreateWorkspaceDto } from './models/workspace.dto';
 import { IWorkspace, IWorkspaceDetail } from './models/workspace.interface';
 import { WorkspacesService } from './workspaces.service';
 import { RoutesService } from '../routes/routes.service';
+import { JwtAuthGuard } from '../auth/guards/jwt.guard';
 
 @Controller('api/workspaces')
+@UseGuards(JwtAuthGuard)
 export class WorkspacesController {
 
   constructor(

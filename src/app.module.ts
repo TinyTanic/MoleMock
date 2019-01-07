@@ -7,18 +7,21 @@ import { RoutesModule } from './routes/routes.module';
 import { ApiModule } from './api/api.module';
 
 import env from './scripts/env';
+import { AuthModule } from './auth/auth.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      // tslint:disable-next-line:max-line-length
       url: env.DATABASE_URL,
       entities: ['src/**/**.entity{.ts,.js}'],
       synchronize: true,
     }),
     WorkspacesModule,
     RoutesModule,
+    AuthModule,
+    UserModule,
     ApiModule,
   ],
   controllers: [ AppController ],

@@ -1,3 +1,6 @@
+const env = process.env || {};
+
 export default {
-  ...process.env,
+  PORT: env.PORT,
+  DATABASE_URL: env.DATABASE_URL,
 }
