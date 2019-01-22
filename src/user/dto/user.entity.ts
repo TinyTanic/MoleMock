@@ -1,4 +1,6 @@
-import { Column, Entity, PrimaryColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryColumn } from 'typeorm';
+
+import { Workspace } from '../../workspaces/models/workspace.entity';
 
 @Entity()
 export class User {
@@ -15,7 +17,7 @@ export class User {
 
   @Column() surname: string;
 
-  // @OneToMany(type => Route, route => route.workspace)
-  // routes: Route[];
+  @OneToMany(type => Workspace, workspace => workspace.user)
+  workspaces: Workspace[];
 
 }

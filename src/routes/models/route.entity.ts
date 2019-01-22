@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
+
 import { Workspace } from '../../workspaces/models/workspace.entity';
 
 @Entity()

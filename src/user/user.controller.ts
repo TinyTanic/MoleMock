@@ -13,7 +13,7 @@ export class UserController {
   @Get()
   // @UseGuards(JwtAuthGuard)
   public async getAll() {
-    const all = await this._userService.getAll();    
+    const all = await this._userService.getAll();
     return all;
   }
 

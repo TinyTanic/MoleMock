@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Render } from '@nestjs/common';
+import { Controller, Get, Render } from '@nestjs/common';
 import * as Handlebars from 'hbs';
 import { WorkspacesService } from 'workspaces/workspaces.service';
 

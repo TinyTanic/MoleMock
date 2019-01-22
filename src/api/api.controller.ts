@@ -1,6 +1,7 @@
-import { Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
-import { RoutesService } from '../routes/routes.service';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
+
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
+import { RoutesService } from '../routes/routes.service';
 
 @Controller('api')
 @UseGuards(JwtAuthGuard)
