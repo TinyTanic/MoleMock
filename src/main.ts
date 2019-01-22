@@ -9,9 +9,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
 
-  app.useStaticAssets(join(__dirname, '..', 'public'));
-  app.setBaseViewsDir(join(__dirname, '..', 'views'));
-  app.setViewEngine('hbs');
   app.useGlobalInterceptors(new LoggingInterceptor());
   await app.listen(env.PORT);
 }
