@@ -8,4 +8,5 @@ export interface IWorkspace {
 
 export interface IWorkspaceDetail extends IWorkspace {
   routes: IRoute[];
+  user: string;
 }

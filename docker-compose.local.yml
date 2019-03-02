@@ -1,0 +1,25 @@
+version: '3'
+services:
+  mock-a-boo:
+    image: node:alpine
+    environment:
+      - NODE_ENV=development
+      - PORT=80
+      - DATABASE_URL=postgres://mock-a-boo:mock-a-boo@database:5432/mock-a-boo
+    volumes:
+      - .:/app
+    working_dir: /app
+    ports:
+      - 3002:80
+    command: npm run start:dev
+    depends_on:
+      - database
+
+  database:
+    image: postgres:alpine
+    volumes:
+      - /tmp/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=mock-a-boo
+      - POSTGRES_USER=mock-a-boo
+      - POSTGRES_DB=mock-a-boo
