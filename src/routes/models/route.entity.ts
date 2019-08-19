@@ -1,17 +1,24 @@
-import { Column, Entity, PrimaryColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne, PrimaryColumn } from 'typeorm';
+
 import { Workspace } from '../../workspaces/models/workspace.entity';
+import { User } from '../../user/dto/user.entity';
 
 @Entity()
 export class Route {
-
-  @PrimaryColumn() id: string;
+  @PrimaryColumn()
+  id: string;
 
   @ManyToOne(type => Workspace, workspace => workspace.routes)
   workspace: string;
 
-  @Column() name: string;
+  @ManyToOne(type => User, user => user.routes)
+  user: string;
 
-  @Column() description: string;
+  @Column()
+  name: string;
+
+  @Column()
+  description: string;
 
   @Column({
     nullable: true,
@@ -23,5 +30,4 @@ export class Route {
     default: '{}',
   })
   payload: any;
-
 }
