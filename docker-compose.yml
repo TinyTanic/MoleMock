@@ -1,17 +1,17 @@
 version: '3'
 services:
-
   mole-mock:
     image: node:alpine
     environment:
-      - NODE_ENV=development
-      - DATABASE_URL=postgres://jsonserver:jsonserver@database:5432/jsonserver
+      - NODE_ENV=${NODE_ENV}
+      - PORT=${PORT}
+      - DATABASE_URL=${DATABASE_URL}
     volumes:
       - .:/app
     working_dir: /app
     ports:
       - 3002:3000
-    command: npm run start
+    command: npm run start:dev
     depends_on:
       - database
 

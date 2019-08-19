@@ -31,7 +31,7 @@ export class AuthService {
     return null;
   }
 
-  public async signup(user: User) {
+  public async signup(user: UserDto) {
     const freeUsername = await this._userService.getByUsername(user.username);
 
     if (freeUsername) {

@@ -18,7 +18,7 @@ import { RoutesService } from './routes.service';
 import { User } from '../common/decorators/user.decorator';
 
 @Controller('api/route')
-@UseGuards(JwtAuthGuard)
+// @UseGuards(JwtAuthGuard)
 export class RoutesController {
   constructor(private readonly _routesService: RoutesService) {}
 

@@ -1,17 +1,16 @@
 import { Controller, Get, Render } from '@nestjs/common';
 import * as Handlebars from 'hbs';
-import { WorkspacesService } from 'workspaces/workspaces.service';
+import { WorkspacesService } from './workspaces/workspaces.service';
 
 import { RoutesService } from './routes/routes.service';
 
 @Controller()
 export class AppController {
-
   constructor(
     private readonly _workspacesService: WorkspacesService,
     private readonly _routesService: RoutesService,
   ) {
-    Handlebars.registerHelper('json', (context) => {
+    Handlebars.registerHelper('json', context => {
       return JSON.stringify(context);
     });
   }
@@ -19,10 +18,9 @@ export class AppController {
   @Get()
   @Render('index')
   public root() {
-    return ({
+    return {
       message: 'hello world!',
-    });
+    };
     // return this.appService.root();
   }
-
 }

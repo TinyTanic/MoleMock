@@ -22,7 +22,7 @@ export class UserService {
     return user;
   }
 
-  public async addUser(user: User): Promise<UserDto> {
+  public async addUser(user: UserDto): Promise<UserDto> {
     const newUser = await this._userRepository.save(user);
     return dropPassword(newUser);
   }
