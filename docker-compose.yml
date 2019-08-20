@@ -20,6 +20,6 @@ services:
     volumes:
       - ./data/db:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=jsonserver
-      - POSTGRES_USER=jsonserver
-      - POSTGRES_DB=jsonserver
+      - POSTGRES_PASSWORD=mockingbird
+      - POSTGRES_USER=mockingbird
+      - POSTGRES_DB=mockingbird
