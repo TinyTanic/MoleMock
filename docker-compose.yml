@@ -1,6 +1,6 @@
 version: '3'
 services:
-  mole-mock:
+  backend:
     image: node:alpine
     environment:
       - NODE_ENV=${NODE_ENV}
