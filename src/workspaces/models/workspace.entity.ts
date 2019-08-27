@@ -5,7 +5,6 @@ import { User } from '../../user/dto/user.entity';
 
 @Entity()
 export class Workspace {
-
   @PrimaryColumn() id: string;
 
   @Column() name: string;
@@ -15,7 +14,8 @@ export class Workspace {
   @ManyToOne(type => User, user => user.workspaces)
   user: User;
 
-  @OneToMany(type => Route, route => route.workspace)
+  @OneToMany(type => Route, route => route.workspace, {
+    cascade: true,
+  })
   routes: Route[];
-
 }

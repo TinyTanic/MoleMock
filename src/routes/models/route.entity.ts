@@ -8,7 +8,9 @@ export class Route {
   @PrimaryColumn()
   id: string;
 
-  @ManyToOne(type => Workspace, workspace => workspace.routes)
+  @ManyToOne(type => Workspace, workspace => workspace.routes, {
+    onDelete: 'CASCADE',
+  })
   workspace: string;
 
   @ManyToOne(type => User, user => user.routes)
