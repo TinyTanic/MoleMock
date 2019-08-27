@@ -1,26 +1,4 @@
-import { Controller, Get, Render } from '@nestjs/common';
-import * as Handlebars from 'hbs';
-import { WorkspacesService } from './workspaces/workspaces.service';
-
-import { RoutesService } from './routes/routes.service';
+import { Controller } from '@nestjs/common';
 
 @Controller()
-export class AppController {
-  constructor(
-    private readonly _workspacesService: WorkspacesService,
-    private readonly _routesService: RoutesService,
-  ) {
-    Handlebars.registerHelper('json', context => {
-      return JSON.stringify(context);
-    });
-  }
-
-  @Get()
-  @Render('index')
-  public root() {
-    return {
-      message: 'hello world!',
-    };
-    // return this.appService.root();
-  }
-}
+export class AppController {}
