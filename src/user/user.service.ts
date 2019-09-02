@@ -2,7 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { dropPassword } from '../common/utils/user.util';
+import { IncorrectOldPasswordException } from '../common/utils/errors/IncorrectOldPasswordException.error';
+import { dropPassword, hashPassword } from '../common/utils/user.util';
+import { ChangePasswordDto } from './dto/change-password.dto';
 import { UserDto } from './dto/user.dto';
 import { User } from './dto/user.entity';
 
@@ -30,5 +32,24 @@ export class UserService {
   public async getAll() {
     const users = await this._userRepository.find();
     return users.map(dropPassword);
+  }
+
+  public async removeById(id): Promise<boolean> {
+    const del =  await this._userRepository.delete(id);
+    return del.affected > 0;
+  }
+
+  public async changePassword(user: UserDto, passwords: ChangePasswordDto) {
+    const oldPasswordHashed = hashPassword(passwords.oldPassword);
+    if (oldPasswordHashed === user.password) {
+      return await this._userRepository.update(
+        { id: user.id },
+        {
+          password: hashPassword(passwords.newPassword),
+        },
+      );
+    } else {
+      throw new IncorrectOldPasswordException();
+    }
   }
 }

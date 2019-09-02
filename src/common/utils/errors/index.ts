@@ -1,0 +1,3 @@
+export enum ErrorCode {
+  INCORRECT_OLD_PASSWORD = 'INCORRECT_OLD_PASSWORD',
+}
