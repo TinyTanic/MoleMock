@@ -23,6 +23,8 @@ export class RecaptchaGuard implements CanActivate {
       .replace('{secret}', env.RECAPTCHA_KEY)
       .replace('{response}', headers.recaptcha);
 
+    console.log(verificationUrl);
+
     const { data } = await this._httpService.post(verificationUrl).toPromise();
 
     return data.success;
