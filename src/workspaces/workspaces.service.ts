@@ -7,6 +7,8 @@ import { UserDto } from '../user/dto/user.dto';
 import { CreateWorkspaceDto } from './models/workspace.dto';
 import { Workspace } from './models/workspace.entity';
 import { IWorkspace, IWorkspaceDetail } from './models/workspace.interface';
+import { CreateRouteDto } from '../routes/models/route.dto';
+import { User } from '../user/dto/user.entity';
 
 @Injectable()
 export class WorkspacesService {
@@ -69,5 +71,19 @@ export class WorkspacesService {
         id: user.id,
       },
     });
+  }
+
+  public async update(
+    routeId: string,
+    route: CreateRouteDto,
+    user: User,
+  ): Promise<IWorkspace> {
+    const selectedRoute = await this._workspaceRepository.find({
+      where: {
+        id: routeId,
+        user: user.id,
+      },
+    });
+    return await this._workspaceRepository.save(route);
   }
 }

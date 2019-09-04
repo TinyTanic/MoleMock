@@ -9,6 +9,7 @@ import {
   Param,
   Post,
   UseGuards,
+  Patch,
 } from '@nestjs/common';
 
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
@@ -49,6 +50,15 @@ export class WorkspacesController {
     @User() user: UserDto,
   ): Promise<IWorkspace> {
     return await this._workspacesService.create(createWorkspaceDto, user);
+  }
+
+  @Patch(':id')
+  public async update(
+    @Body() route: CreateWorkspaceDto,
+    @Param('id') workspaceId,
+    @User() user,
+  ) {
+    return this._workspacesService.update(workspaceId, route, user);
   }
 
   @Delete(':id')
