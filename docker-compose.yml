@@ -6,6 +6,8 @@ services:
       - NODE_ENV=${NODE_ENV}
       - PORT=${PORT}
       - DATABASE_URL=${DATABASE_URL}
+      - RECAPTCHA_KEY=${RECAPTCHA_KEY}
+      - RECAPTCHA_URL=${RECAPTCHA_URL}
     volumes:
       - .:/app
     working_dir: /app

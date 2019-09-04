@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { ApiModule } from './api/api.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { WorkspacesModule } from './workspaces/workspaces.module';
-import { RoutesModule } from './routes/routes.module';
-import { ApiModule } from './api/api.module';
-
-import env from './scripts/env';
 import { AuthModule } from './auth/auth.module';
+import { RoutesModule } from './routes/routes.module';
+import env from './scripts/env';
 import { UserModule } from './user/user.module';
+import { WorkspacesModule } from './workspaces/workspaces.module';
 
 @Module({
   imports: [
@@ -24,7 +24,7 @@ import { UserModule } from './user/user.module';
     UserModule,
     ApiModule,
   ],
-  controllers: [ AppController ],
-  providers: [ AppService ],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
