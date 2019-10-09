@@ -9,7 +9,10 @@ export class Workspace {
 
   @Column() name: string;
 
-  @Column() description: string;
+  @Column({
+    nullable: true,
+  })
+  description: string;
 
   @ManyToOne(type => User, user => user.workspaces)
   user: User;

@@ -19,7 +19,9 @@ export class Route {
   @Column()
   name: string;
 
-  @Column()
+  @Column({
+    nullable: true,
+  })
   description: string;
 
   @Column({
