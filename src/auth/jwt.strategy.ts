@@ -4,13 +4,14 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 
 import { UserService } from '../user/user.service';
 import { JwtPayload } from './dto/jwt-payload.interface';
+import env from '../scripts/env';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   public constructor(private readonly _userService: UserService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: 'secretKey',
+      secretOrKey: env.JWT_SECRET_KEY,
     });
   }
 

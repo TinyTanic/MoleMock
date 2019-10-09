@@ -14,7 +14,7 @@ import env from '../scripts/env';
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
-      secretOrPrivateKey: env.JWT_SECRET_KEY,
+      secret: env.JWT_SECRET_KEY,
       signOptions: {
         expiresIn: env.JWT_TIME_EXPIRE,
       },
