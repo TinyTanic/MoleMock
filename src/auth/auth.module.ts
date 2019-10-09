@@ -8,14 +8,15 @@ import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './guards/jwt.guard';
 import { RecaptchaGuard } from './guards/recaptcha.guard';
 import { JwtStrategy } from './jwt.strategy';
+import env from '../scripts/env';
 
 @Module({
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
     JwtModule.register({
-      secretOrPrivateKey: 'secretKey',
+      secretOrPrivateKey: env.JWT_SECRET_KEY,
       signOptions: {
-        expiresIn: 3600,
+        expiresIn: env.JWT_TIME_EXPIRE,
       },
     }),
     UserModule,
