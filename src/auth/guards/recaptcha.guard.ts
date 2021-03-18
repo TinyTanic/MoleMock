@@ -5,11 +5,14 @@ import {
   BadRequestException,
   HttpService,
 } from '@nestjs/common';
-import env from '../../scripts/env';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class RecaptchaGuard implements CanActivate {
-  constructor(private readonly _httpService: HttpService) {}
+  constructor(
+    private readonly _httpService: HttpService,
+    private readonly configService: ConfigService,
+  ) { }
 
   public async canActivate(context: ExecutionContext): Promise<boolean> {
     const { headers } = context.switchToHttp().getRequest();
@@ -17,13 +20,11 @@ export class RecaptchaGuard implements CanActivate {
       throw new BadRequestException('no recaptcha code provided');
     }
 
-    const { RECAPTCHA_URL } = env;
+    const recaptchaUrl = this.configService.get('RECAPTCHA_URL');
 
-    const verificationUrl = String(RECAPTCHA_URL)
-      .replace('{secret}', env.RECAPTCHA_KEY)
+    const verificationUrl = String(recaptchaUrl)
+      .replace('{secret}', recaptchaUrl)
       .replace('{response}', headers.recaptcha);
-
-    console.log(verificationUrl);
 
     const { data } = await this._httpService.post(verificationUrl).toPromise();
 

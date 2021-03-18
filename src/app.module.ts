@@ -7,7 +7,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { RoutesModule } from './routes/routes.module';
-import env from './scripts/env';
 import { UserModule } from './user/user.module';
 import { WorkspacesModule } from './workspaces/workspaces.module';
 

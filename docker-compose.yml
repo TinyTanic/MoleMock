@@ -1,29 +1,31 @@
 version: '3'
 services:
-  backend:
-    image: node:alpine
-    environment:
-      - NODE_ENV=${NODE_ENV}
-      - PORT=${PORT}
-      - DATABASE_URL=${DATABASE_URL}
-      - RECAPTCHA_KEY=${RECAPTCHA_KEY}
-      - RECAPTCHA_URL=${RECAPTCHA_URL}
-      - JWT_TIME_EXPIRE=${JWT_TIME_EXPIRE}
-      - JWT_SECRET_KEY=${JWT_SECRET_KEY}
-      - DATABASE_SSL=${DATABASE_SSL}
-    volumes:
-      - .:/app
-    working_dir: /app
-    ports:
-      - 3002:3000
-    command: npm run start:dev
-    depends_on:
-      - database
+  # backend:
+  #   image: node:alpine
+  #   environment:
+  #     - NODE_ENV=${NODE_ENV}
+  #     - PORT=${PORT}
+  #     - DATABASE_URL=${DATABASE_URL}
+  #     - RECAPTCHA_KEY=${RECAPTCHA_KEY}
+  #     - RECAPTCHA_URL=${RECAPTCHA_URL}
+  #     - JWT_TIME_EXPIRE=${JWT_TIME_EXPIRE}
+  #     - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+  #     - DATABASE_SSL=${DATABASE_SSL}
+  #   volumes:
+  #     - .:/app
+  #   working_dir: /app
+  #   ports:
+  #     - 3002:3000
+  #   command: npm run start:dev
+  #   depends_on:
+  #     - database
 
   database:
     image: postgres:alpine
     volumes:
       - ./data/db:/var/lib/postgresql/data
+    ports: 
+      - 5432:5432
     environment:
       - POSTGRES_PASSWORD=mockingbird
       - POSTGRES_USER=mockingbird
