@@ -10,6 +10,7 @@ services:
       - RECAPTCHA_URL=${RECAPTCHA_URL}
       - JWT_TIME_EXPIRE=${JWT_TIME_EXPIRE}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - DATABASE_SSL=${DATABASE_SSL}
     volumes:
       - .:/app
     working_dir: /app
