@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { ApiModule } from './api/api.module';
@@ -12,15 +13,26 @@ import { WorkspacesModule } from './workspaces/workspaces.module';
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'postgres',
-      url: env.DATABASE_URL,
-      entities: ['src/**/**.entity{.ts,.js}'],
-      synchronize: true,
-      ssl: env.DATABASE_SSL ? {
-        rejectUnauthorized: false,
-      } : undefined,
+    TypeOrmModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => {
+        let ssl: any;
+        if (configService.get('DATABASE_SSL') === 'true') {
+          ssl = {
+            rejectUnauthorized: false,
+          };
+        }
+        return {
+          type: 'postgres',
+          url: configService.get('DATABASE_URL'),
+          entities: ['src/**/**.entity{.ts,.js}'],
+          synchronize: true,
+          ssl,
+        };
+      },
     }),
+    ConfigModule.forRoot(),
     WorkspacesModule,
     RoutesModule,
     AuthModule,
@@ -30,4 +42,4 @@ import { WorkspacesModule } from './workspaces/workspaces.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
