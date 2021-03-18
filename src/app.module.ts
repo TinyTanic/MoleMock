@@ -17,6 +17,7 @@ import { WorkspacesModule } from './workspaces/workspaces.module';
       url: env.DATABASE_URL,
       entities: ['src/**/**.entity{.ts,.js}'],
       synchronize: true,
+      ssl: env.DATABASE_SSL,
     }),
     WorkspacesModule,
     RoutesModule,
