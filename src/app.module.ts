@@ -22,6 +22,14 @@ import { WorkspacesModule } from './workspaces/workspaces.module';
             rejectUnauthorized: false,
           };
         }
+        console.log({
+          type: 'postgres',
+          url: configService.get('DATABASE_URL'),
+          entities: ['src/**/**.entity{.ts,.js}'],
+          synchronize: true,
+          ssl,
+        })
+
         return {
           type: 'postgres',
           url: configService.get('DATABASE_URL'),
